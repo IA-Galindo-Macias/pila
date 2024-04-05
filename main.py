@@ -59,17 +59,22 @@ class TestPila(unittest.TestCase):
 
         prev_size = pila.size()
 
-        # quitar valor
-        test_value = pila.pull()
-
-        self.assertNotEqual(pila.pull(), pushed)
+        self.assertEqual(pila.pull(), pushed)
         self.assertEqual(pila.size(), prev_size - 1, "Pila tiene un elemento menos")
 
     def test_isEmpty_when_empty(self):
-        self.assertEqual(1, 1)
+        pila = Pila()
+
+        self.assertTrue(pila.isEmpty(), "La pila está vacía")
+
     
     def test_isEmpty_when_not_empty(self):
-        self.assertEqual(1, 1)
+        pila = Pila()
+        pila.push(1)
+        pila.push(2)
+        pila.push(3)
+
+        self.assertFalse(pila.isEmpty(), "La pila no esta vacía")
 
     def test_size_when_empty(self):
         pila = Pila()
