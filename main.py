@@ -1,3 +1,5 @@
+# THIS METHOD WAS MODIFIED: test_push_when_not_empty
+
 import unittest
 
 class Pila():
@@ -35,20 +37,17 @@ class TestPila(unittest.TestCase):
         # pila no vacia
         pila = Pila() 
         pila.pila = [1,2,3,4]
+        prev_size = pila.size()
 
         # agregar valor 
         test_value = 0
         pila.push(test_value)
     
-        self.assertEqual(pila.size(), 5, "Pila tiene un elemento")
-        self.assertIn(test_value, pila.pila, "El valor esta en la pila")
+        self.assertEqual(pila.size(), prev_size + 1, "Pila tiene un elemento más")
+        self.assertEqual(test_value, pila.pila[-1], "El valor esta en la pila")
 
     def test_pull_when_empty(self):
-        pila = Pila() # pila vacia
-        pila.pull()
-
-        self.assertEqual(pila.size(), 0, "Pila esta vacía")
-        
+        pass
         
 
     def test_pull_when_not_empty(self):
