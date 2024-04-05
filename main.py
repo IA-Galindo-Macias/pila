@@ -44,7 +44,11 @@ class TestPila(unittest.TestCase):
         self.assertIn(test_value, pila.pila, "El valor esta en la pila")
 
     def test_pull_when_empty(self):
-        pass
+        pila = Pila() # pila vacia
+        pila.pull()
+
+        self.assertEqual(pila.size(), 0, "Pila esta vacía")
+        
         
 
     def test_pull_when_not_empty(self):
