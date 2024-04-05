@@ -57,9 +57,14 @@ class TestPila(unittest.TestCase):
         self.assertEqual(1, 1)
 
     def test_size_when_empty(self):
-        self.assertEqual(1, 1)
+        pila = Pila()
+        pila.pila = []
+        self.assertEqual(pila.size(), 0, "Pila vacia")
 
     def test_size_when_not_empty(self):
+        pila = Pila()
+        pila.pila = [1,2,3,4]
+        self.assertEqual(pila.size(), 4, "Pila no vacia")
         self.assertEqual(1, 1)
     
 if __name__ == '__main__':
