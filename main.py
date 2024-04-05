@@ -62,10 +62,19 @@ class TestPila(unittest.TestCase):
         self.assertNotIn(test_value, pila.pila, "El valor ya no está en la pila")
 
     def test_isEmpty_when_empty(self):
-        self.assertEqual(1, 1)
+        pila = Pila()
+
+        self.assertTrue(pila.isEmpty(), "La pila NO esta vacía")
+
     
     def test_isEmpty_when_not_empty(self):
-        self.assertEqual(1, 1)
+        pila = Pila()
+        pila.push(1)
+        pila.push(2)
+        pila.push(3)
+
+        self.assertFalse(pila.isEmpty(), "La pila esta vacía")
+
 
     def test_size_when_empty(self):
         pila = Pila()
