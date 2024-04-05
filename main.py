@@ -1,47 +1,23 @@
 import unittest
 
-class pila():
+class Pila():
     def __init__(self):
         self.pila = []
 
     def push(self, data):
-        pila.append(data)
+        self.pila.append(data)
 
     def pull(self):
-        pila.pop()
+        if self.isEmpty():
+            return None
+        else:
+            return self.pila.pop()
 
     def isEmpty(self):
-        
+        return not bool(self.pila)
 
     def size(self):
-        return self.pila
+        return len(self.pila)
 
-
-class TestPila(unittest.TestCase):
-
-    def test_push_when_empty(self):
-        self.assertEqual(1, 1)
-
-    def test_push_when_not_empty(self):
-        self.assertEqual(1, 1)
-
-    def test_pull_when_empty(self):
-        self.assertEqual(1, 1)
-
-    def test_pull_when_not_empty(self):
-        self.assertEqual(1, 1)
-
-    def test_isEmpty_when_empty(self):
-        self.assertEqual(1, 1)
-    
-    def test_isEmpty_when_not_empty(self):
-        self.assertEqual(1, 1)
-
-    def test_size_when_empty(self):
-        self.assertEqual(1, 1)
-
-    def test_size_when_not_empty(self):
-        self.assertEqual(1, 1)
-    
-if __name__ == '__main__':
-    unittest.main()
+pila = Pila()
+pila.push(56)
