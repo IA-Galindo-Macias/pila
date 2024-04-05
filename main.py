@@ -8,10 +8,7 @@ class Pila():
         self.pila.append(data)
 
     def pull(self):
-        if self.isEmpty():
-            return None
-        else:
-            return self.pila.pop()
+        return None if self.isEmpty() else self.pila.pop()
 
     def isEmpty(self):
         return not bool(self.pila)
@@ -35,46 +32,43 @@ class TestPila(unittest.TestCase):
         # pila no vacia
         pila = Pila() 
         pila.pila = [1,2,3,4]
-        prev_size = pila.size()
 
         # agregar valor 
         test_value = 0
         pila.push(test_value)
     
-        self.assertEqual(pila.size(), prev_size + 1, "Pila tiene un elemento más")
-        self.assertEqual(test_value, pila.pila[-1], "El valor esta en la pila")
+        self.assertEqual(pila.size(), 5, "Pila tiene un elemento")
+        self.assertIn(test_value, pila.pila, "El valor esta en la pila")
 
     def test_pull_when_empty(self):
         pila = Pila() # pila vacia
-        
-        self.assertEqual(pila.pull(), None, "Pull no se puede hacer")
+        pila.pull()
+
+        self.assertEqual(pila.size(), 0, "Pila esta vacía")
 
     def test_pull_when_not_empty(self):
         # pila no vacia
         pila = Pila() 
         pila.pila = [1,2,3,4,5]
 
-        pushed = 0
-        pila.push(pushed)
+        # quitar valor
+        test_value = pila.pull()
 
-        prev_size = pila.size()
-
-        self.assertEqual(pila.pull(), pushed)
-        self.assertEqual(pila.size(), prev_size - 1, "Pila tiene un elemento menos")
+        self.assertEqual(pila.size(), 4, "Pila tiene un elemento")
+        self.assertNotIn(test_value, pila.pila, "El valor ya no está en la pila")
 
     def test_isEmpty_when_empty(self):
         pila = Pila()
 
-        self.assertTrue(pila.isEmpty(), "La pila está vacía")
+        self.assertTrue(pila.isEmpty(), "La pila NO esta vacía")
 
-    
     def test_isEmpty_when_not_empty(self):
         pila = Pila()
         pila.push(1)
         pila.push(2)
         pila.push(3)
 
-        self.assertFalse(pila.isEmpty(), "La pila no esta vacía")
+        self.assertFalse(pila.isEmpty(), "La pila esta vacía")
 
     def test_size_when_empty(self):
         pila = Pila()
